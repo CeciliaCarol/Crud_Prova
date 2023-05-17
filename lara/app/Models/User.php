@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function myProjetos()
+    public function myMercados()
     {
-        return $this->hasMany(Projeto::class, 'user_id');
+        return $this->hasMany(Mercado::class, 'user_id');
     }
 }
