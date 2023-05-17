@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projeto extends Model
+class Mercado extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nome',
-        'descricao',
-        'inicio',
-        'termino',
-        'responsavel',
+        'endereco',
+        'telefone',
+        'ncaixas',
+        'hfunciona',
         'user_id'
     ];
 }
