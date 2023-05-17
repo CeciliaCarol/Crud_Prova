@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Projeto;
+use App\Models\Mercado;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProjetoController extends Controller
+class MercadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,13 +38,13 @@ class ProjetoController extends Controller
     public function store(Request $request)
     {
         User::find(Auth::user()->id)
-        ->myProjetos()
+        ->myMercados()
         ->create([
             'nome' => $request->nome,
-            'descricao' => $request->descricao,
-            'inicio' => $request->inicio,
-            'termino' => $request->termino,
-            'responsavel' => $request->responsavel
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone,
+            'ncaixas' => $request->ncaixas,
+            'hfunciona' => $request->hfunciona
         ]);
 
         return redirect (route('dashboard'));
@@ -56,7 +56,7 @@ class ProjetoController extends Controller
      * @param  \App\Models\Projeto  $projeto
      * @return \Illuminate\Http\Response
      */
-    public function show(Projeto $projeto)
+    public function show(Mercado $mercado)
     {
         //
     }
@@ -67,7 +67,7 @@ class ProjetoController extends Controller
      * @param  \App\Models\Projeto  $projeto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Projeto $projeto)
+    public function edit(Mercado $mercado)
     {
         //
     }
@@ -81,13 +81,13 @@ class ProjetoController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        $task = Projeto::findOrFail($id);
+        $task = Mercado::findOrFail($id);
         $task->update([
             'nome' => $request->nome,
-            'descricao' => $request->descricao,
-            'inicio' => $request->inicio,
-            'termino' => $request->termino,
-            'responsavel' => $request->responsavel
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone,
+            'ncaixas' => $request->ncaixas,
+            'hfunciona' => $request->hfunciona
         ]);
  
          return redirect (route('dashboard'));
@@ -101,7 +101,7 @@ class ProjetoController extends Controller
      */
     public function destroy( $id)
     {
-        $task = Projeto::findOrFail($id);  
+        $task = Mercado::findOrFail($id);  
         $task->delete();
   
         return redirect (route('dashboard'));
